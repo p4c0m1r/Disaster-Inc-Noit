@@ -32,6 +32,7 @@ public class PlanetOrbitCamera : MonoBehaviour
 
     void LateUpdate()
     {
+        
         if (target == null || Mouse.current == null) return;
         
         if (Mouse.current.leftButton.isPressed)
@@ -42,12 +43,13 @@ public class PlanetOrbitCamera : MonoBehaviour
             pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
         }
         float scroll = Mouse.current.scroll.ReadValue().y;
+
         if (Mathf.Abs(scroll) > 0.01f)
         {
             distance -= scroll * zoomSpeed * Time.deltaTime;
             distance = Mathf.Clamp(distance, minDistance, maxDistance);
+            if (distance > 20) return;
         }
-
         Quaternion rot = Quaternion.Euler(pitch, yaw, 0f);
         Vector3 offset = rot * new Vector3(0f, 0f, -distance);
 
