@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 77b97b6e5c9647246a11734c861c7778
+timeCreated: 1492087789
+licenseType: Store
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80008
+  packageName: Globe - Data Visualizer
+  packageVersion: 1.0
+  assetPath: Assets/Unity3DGlobe/Resources/population.json
+  uploadId: 174367

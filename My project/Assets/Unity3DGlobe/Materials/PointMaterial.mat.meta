@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d93859f47fecd8f439e45305557c92fd
+timeCreated: 1492026492
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80008
+  packageName: Globe - Data Visualizer
+  packageVersion: 1.0
+  assetPath: Assets/Unity3DGlobe/Materials/PointMaterial.mat
+  uploadId: 174367

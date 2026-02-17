@@ -6,7 +6,7 @@ public class AroundSun : MonoBehaviour
     public Transform sun;
     public Transform earth;
 
-    public float orbitSpeed = 10f;
+    public float orbitSpeed = 1f;
 
     void LateUpdate()
     {

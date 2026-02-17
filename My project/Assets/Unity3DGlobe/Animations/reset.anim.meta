@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0321e6e440fedb24e93327a1e6bec8d8
+timeCreated: 1492025422
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80008
+  packageName: Globe - Data Visualizer
+  packageVersion: 1.0
+  assetPath: Assets/Unity3DGlobe/Animations/reset.anim
+  uploadId: 174367

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c5885b125ffb2a74aba1c70df9c3045e
+timeCreated: 1492024155
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80008
+  packageName: Globe - Data Visualizer
+  packageVersion: 1.0
+  assetPath: Assets/Unity3DGlobe/Animations/HigLight.anim
+  uploadId: 174367

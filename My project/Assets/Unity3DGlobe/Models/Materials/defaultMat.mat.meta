@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a5b66b98b8a23c54d95bea747780e759
+timeCreated: 1492199596
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80008
+  packageName: Globe - Data Visualizer
+  packageVersion: 1.0
+  assetPath: Assets/Unity3DGlobe/Models/Materials/defaultMat.mat
+  uploadId: 174367

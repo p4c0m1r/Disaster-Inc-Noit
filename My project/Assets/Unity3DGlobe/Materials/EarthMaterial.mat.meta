@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: aabf89805a60d3c43909d1cd2beeaa38
+timeCreated: 1492007901
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80008
+  packageName: Globe - Data Visualizer
+  packageVersion: 1.0
+  assetPath: Assets/Unity3DGlobe/Materials/EarthMaterial.mat
+  uploadId: 174367

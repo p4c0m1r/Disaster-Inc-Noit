@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4468549ad94b20843b874135a70790d1
+timeCreated: 1492033900
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80008
+  packageName: Globe - Data Visualizer
+  packageVersion: 1.0
+  assetPath: Assets/Unity3DGlobe/Animations/Button.controller
+  uploadId: 174367

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 679ece36bbd2f394a972af8f87249c37
+timeCreated: 1492026415
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80008
+  packageName: Globe - Data Visualizer
+  packageVersion: 1.0
+  assetPath: Assets/Unity3DGlobe/Shaders/UnlitVertexColor.shader
+  uploadId: 174367

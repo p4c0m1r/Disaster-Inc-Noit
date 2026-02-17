@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: dff023814afa9c64e93e73923335bbcb
+timeCreated: 1492118583
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 80008
+  packageName: Globe - Data Visualizer
+  packageVersion: 1.0
+  assetPath: Assets/Unity3DGlobe/Prefabs/Point.prefab
+  uploadId: 174367
