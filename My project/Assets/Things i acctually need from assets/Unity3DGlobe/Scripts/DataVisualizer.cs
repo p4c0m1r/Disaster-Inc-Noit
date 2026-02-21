@@ -10,6 +10,7 @@ public class DataVisualizer : MonoBehaviour {
     public float ValueScaleMultiplier = 1;
     GameObject[] seriesObjects;
     int currentSeries = 0;
+
     public void CreateMeshes(SeriesData[] allSeries)
     {
         seriesObjects = new GameObject[allSeries.Length];
@@ -25,9 +26,13 @@ public class DataVisualizer : MonoBehaviour {
         {
             GameObject seriesObj = new GameObject(allSeries[i].Name);
             seriesObj.transform.parent = Earth.transform;
+            seriesObj.transform.localPosition = Vector3.zero;
+            seriesObj.transform.localRotation = Quaternion.identity;
+            seriesObj.transform.localScale = Vector3.one;
             seriesObjects[i] = seriesObj;
+
             SeriesData seriesData = allSeries[i];
-            for (int j = 0; j < seriesData.Data.Length; j+=3)
+            for (int j = 0; j < seriesData.Data.Length; j += 3)
             {
                 float lat = seriesData.Data[j];
                 float lng = seriesData.Data[j + 1];
@@ -48,29 +53,32 @@ public class DataVisualizer : MonoBehaviour {
             seriesObjects[i].SetActive(false);
         }
 
-
         seriesObjects[currentSeries].SetActive(true);
         Destroy(p);
     }
-    private void AppendPointVertices(GameObject p, Vector3[] verts, int[] indices, float lng,float lat,float value, List<Vector3> meshVertices,
-    List<int> meshIndices,
-    List<Color> meshColors)
+
+    private void AppendPointVertices(GameObject p, Vector3[] verts, int[] indices, float lng, float lat, float value,
+        List<Vector3> meshVertices, List<int> meshIndices, List<Color> meshColors)
     {
         Color valueColor = Colors.Evaluate(value);
-        Vector3 pos;
-        pos.x = 0.5f * Mathf.Cos((lng) * Mathf.Deg2Rad) * Mathf.Cos(lat * Mathf.Deg2Rad);
-        pos.y = 0.5f * Mathf.Sin(lat * Mathf.Deg2Rad);
-        pos.z = 0.5f * Mathf.Sin((lng) * Mathf.Deg2Rad) * Mathf.Cos(lat * Mathf.Deg2Rad);
+
+        
+        Vector3 localPos;
+        localPos.x = 0.5f * Mathf.Cos(lng * Mathf.Deg2Rad) * Mathf.Cos(lat * Mathf.Deg2Rad);
+        localPos.y = 0.5f * Mathf.Sin(lat * Mathf.Deg2Rad);
+        localPos.z = 0.5f * Mathf.Sin(lng * Mathf.Deg2Rad) * Mathf.Cos(lat * Mathf.Deg2Rad);
+
         p.transform.parent = Earth.transform;
-        p.transform.position = pos;
-        p.transform.localScale = new Vector3(1, 1, Mathf.Max(0.001f, value * ValueScaleMultiplier));
-        p.transform.LookAt(pos * 2);
+        p.transform.localPosition = localPos;
+        p.transform.localScale = new Vector3(0.02f, 0.02f, Mathf.Max(0.001f, value * ValueScaleMultiplier));
+        p.transform.localRotation = Quaternion.LookRotation(localPos);
 
         int prevVertCount = meshVertices.Count;
 
         for (int k = 0; k < verts.Length; k++)
         {
-            meshVertices.Add(p.transform.TransformPoint(verts[k]));
+            meshVertices.Add(p.transform.localPosition + p.transform.localRotation * 
+                Vector3.Scale(p.transform.localScale, verts[k]));
             meshColors.Add(valueColor);
         }
         for (int k = 0; k < indices.Length; k++)
@@ -78,18 +86,23 @@ public class DataVisualizer : MonoBehaviour {
             meshIndices.Add(prevVertCount + indices[k]);
         }
     }
-    private void CreateObject(List<Vector3> meshertices, List<int> meshindecies, List<Color> meshColors, GameObject seriesObj)
+
+    private void CreateObject(List<Vector3> meshVertices, List<int> meshIndices, List<Color> meshColors, GameObject seriesObj)
     {
         Mesh mesh = new Mesh();
-        mesh.vertices = meshertices.ToArray();
-        mesh.triangles = meshindecies.ToArray();
+        mesh.vertices = meshVertices.ToArray();
+        mesh.triangles = meshIndices.ToArray();
         mesh.colors = meshColors.ToArray();
-        GameObject obj = new GameObject();
-        obj.transform.parent = Earth.transform;
+        mesh.RecalculateNormals(); 
+        GameObject obj = new GameObject("SeriesMesh");
         obj.AddComponent<MeshFilter>().mesh = mesh;
         obj.AddComponent<MeshRenderer>().material = PointMaterial;
         obj.transform.parent = seriesObj.transform;
+        obj.transform.localPosition = Vector3.zero;
+        obj.transform.localRotation = Quaternion.identity;
+        obj.transform.localScale = Vector3.one;
     }
+
     public void ActivateSeries(int seriesIndex)
     {
         if (seriesIndex >= 0 && seriesIndex < seriesObjects.Length)
@@ -97,10 +110,10 @@ public class DataVisualizer : MonoBehaviour {
             seriesObjects[currentSeries].SetActive(false);
             currentSeries = seriesIndex;
             seriesObjects[currentSeries].SetActive(true);
-
         }
     }
 }
+
 [System.Serializable]
 public class SeriesData
 {
